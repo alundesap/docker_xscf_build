@@ -8,3 +8,10 @@ docker build -t alunde/xscf_build:latest .
 echo "docker run -ti -p 1234:1234 alunde/xscf_build:latest"
 docker push alunde/mysqls:latest
 ```
+
+## List Docker CLI commands
+```
+docker
+docker container --help
+```
+
