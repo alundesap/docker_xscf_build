@@ -16,6 +16,6 @@ export dockid=$(docker container ls | grep  xscf_build | cut -d ' ' -f 1) ; echo
 
 Connect with:
 ```
-vi  /Users/i830671/.ssh/known_hosts ; echo "Root PW is" ; echo "" ; echo "Nirvana8484 ; echo "" ; ssh root@localhost
+vi  /Users/i830671/.ssh/known_hosts ; echo "Root PW is" ; echo "" ; echo "Nirvana8484" ; echo "" ; ssh root@localhost
 ssh root@localhost
 ```
