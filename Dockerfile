@@ -35,7 +35,7 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&sou
 	&& echo "cf api https://api.cf.jp10.hana.ondemand.com" >> /etc/motd \
 	&& echo "" >> /etc/motd \
 	&& echo "xs api https://api.<hostname> --skip-ssl-validation" >> /etc/motd \
-	&& echo "xs api https://<hostname>:39030 --skip-ssl-validation" >> /etc/motd \
+	&& echo "xs api https://hxehost:39030 --skip-ssl-validation" >> /etc/motd \
 	&& echo "xs api https://<hostname>:30030 --skip-ssl-validation" >> /etc/motd \
 	&& echo "" >> /etc/motd \
 	&& echo "git clone https://github.com/alundesap/mta_python_juypter.git" >> /etc/motd \
