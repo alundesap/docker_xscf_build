@@ -3,7 +3,7 @@ MAINTAINER andrew.lunde@sap.com
 
 #Install more stuff if needed
 RUN zypper ar http://download.opensuse.org/tumbleweed/repo/oss/ tumbleweed \
-	&& zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git-core lsof netcat hostname curl tar wget java python-pip python3-pip unzip jq nodejs8 npm libxml2-tools
+	&& zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git-core lsof netcat hostname curl tar wget java python-pip python3-pip unzip jq nodejs8 npm8 libxml2-tools
 RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx \
 	&& mv cf /usr/local/bin/ \ 
 	&& wget http://thedrop.sap-a-team.com/files/mta_plugin_linux_amd64 \
