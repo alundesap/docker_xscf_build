@@ -2,7 +2,8 @@ FROM alunde/opensuse:42.3
 MAINTAINER andrew.lunde@sap.com
 
 #Install more stuff if needed
-RUN zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git-core lsof netcat hostname curl tar wget java python-pip python3-pip unzip jq nodejs npm libxml2-tools
+RUN zypper ar http://download.opensuse.org/tumbleweed/repo/oss/ tumbleweed \
+	&& zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git-core lsof netcat hostname curl tar wget java python-pip python3-pip unzip jq nodejs8 npm libxml2-tools
 RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx \
 	&& mv cf /usr/local/bin/ \ 
 	&& wget http://thedrop.sap-a-team.com/files/mta_plugin_linux_amd64 \
@@ -35,13 +36,15 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&sou
 	&& echo "cf api https://api.cf.jp10.hana.ondemand.com" >> /etc/motd \
 	&& echo "" >> /etc/motd \
 	&& echo "xs api https://api.<hostname> --skip-ssl-validation" >> /etc/motd \
-	&& echo "xs api https://hxehost:39030 --skip-ssl-validation" >> /etc/motd \
 	&& echo "xs api https://<hostname>:30030 --skip-ssl-validation" >> /etc/motd \
 	&& echo "" >> /etc/motd \
 	&& echo "git clone https://github.com/alundesap/mta_python_juypter.git" >> /etc/motd \
 	&& echo "cd mta_python_juypter" >> /etc/motd \
 	&& echo "" >> /etc/motd \
+	&& echo "xs api https://hxehost:39030 --skip-ssl-validation" >> /etc/motd \
 	&& echo "git clone https://github.com/alundesap/mta_dt_poc.git" >> /etc/motd \
+	&& echo "git clone https://github.com/alundesap/mta_dt_poc_master.git" >> /etc/motd \
+	&& echo "git clone https://github.com/alundesap/mta_dt_poc_client.git" >> /etc/motd \
 	&& echo "cd mta_dt_poc" >> /etc/motd \
 	&& echo "" >> /etc/motd
 #
