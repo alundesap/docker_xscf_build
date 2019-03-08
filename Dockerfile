@@ -5,6 +5,7 @@ MAINTAINER andrew.lunde@sap.com
 RUN zypper ar http://download.opensuse.org/tumbleweed/repo/oss/ tumbleweed \
 	&& zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git-core lsof netcat hostname curl tar wget java python-pip python3-pip unzip jq nodejs8 npm8 libxml2-tools
 RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx \
+	&& npm install -g npm \ 
 	&& mv cf /usr/local/bin/ \ 
 	&& wget http://thedrop.sap-a-team.com/files/mta_plugin_linux_amd64 \
 	&& cf install-plugin mta_plugin_linux_amd64 -f \
@@ -41,11 +42,14 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&sou
 	&& echo "git clone https://github.com/alundesap/mta_python_juypter.git" >> /etc/motd \
 	&& echo "cd mta_python_juypter" >> /etc/motd \
 	&& echo "" >> /etc/motd \
-	&& echo "xs api https://hxehost:39030 --skip-ssl-validation" >> /etc/motd \
+	&& echo "xs api https://api.p2sb.psg.tax.us.deloitte.com:443/ --skip-ssl-validation" >> /etc/motd \
+	&& echo "xs login -u APPAEOI -p Nirvana####1" >> /etc/motd \
 	&& echo "git clone https://github.com/alundesap/mta_dt_poc.git" >> /etc/motd \
-	&& echo "git clone https://github.com/alundesap/mta_dt_poc_master.git" >> /etc/motd \
-	&& echo "git clone https://github.com/alundesap/mta_dt_poc_client.git" >> /etc/motd \
+	&& echo "git config --global user.email "'"'"andrew.lunde@sap.com"'"' >> /etc/motd \
+	&& echo "git config --global user.name "'"'"Andrew Lunde"'"' >> /etc/motd \
 	&& echo "cd mta_dt_poc" >> /etc/motd \
+	&& echo "" >> /etc/motd \
+	&& echo "ssh-keygen ; cat /root/.ssh/id_rsa.pub" >> /etc/motd \
 	&& echo "" >> /etc/motd
 #
 COPY entrypoint.sh /usr/local/bin/
