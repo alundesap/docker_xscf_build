@@ -24,6 +24,10 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&sou
 	&& chmod 755 /usr/local/xs_cli/bin/mta \
 	&& rm -f /mta_plugin_linux_amd64 \
 	&& rm -f /xs.onpremise.runtime.client_linuxx86_64.zip \
+	&& wget -c http://thedrop.sap-a-team.com./files/hanaclient-2.3.144-linux-x64.tar.gz \
+	&& tar xzvf hanaclient-2.3.144-linux-x64.tar.gz \
+	&& client/hdbinst -b \
+	&& echo "export PATH=\$PATH:/usr/sap/hdbclient" >> /etc/bash.bashrc \
 	&& echo "" > /etc/motd \
 	&& echo "Welcome to Andrew's xscf-build" >> /etc/motd \
 	&& echo "" >> /etc/motd \
